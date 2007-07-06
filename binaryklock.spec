@@ -19,16 +19,14 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BinaryKlock is a binary clock kicker applet.
 
 %description -l pl.UTF-8
-BinaryKlock to biarny zegar będący apletem kickera.
+BinaryKlock to binarny zegar będący apletem kickera.
 
 %prep
 %setup -q -n %{name}
 %patch0 -p1
 
 %build
-# update config.sub for amd64
 cp -f /usr/share/automake/config.sub admin
-# or rebuild auto*
 %{__make} -f admin/Makefile.common cvs
 %configure \
 %if "%{_lib}" == "lib64"
@@ -55,6 +53,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%{_datadir}/apps/kicker/applets/*.desktop
 %{_libdir}/kde3/binaryklock_panelapplet.la
 %attr(755,root,root) %{_libdir}/kde3/binaryklock_panelapplet.so
+%{_datadir}/apps/kicker/applets/*.desktop
