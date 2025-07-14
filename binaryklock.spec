@@ -23,7 +23,7 @@ BinaryKlock to binarny zegar będący apletem kickera.
 
 %prep
 %setup -q -n %{name}
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 cp -f /usr/share/automake/config.sub admin
